@@ -1,0 +1,13 @@
+TodoList.API/bin
+TodoList.API/obj
+TodoList.Application/bin
+TodoList.Application/obj
+TodoList.Core/bin
+TodoList.Core/obj
+TodoList.Infrastructure/bin
+TodoList.Infrastructure/obj
+TodoList.Persistence/bin
+TodoList.Persistence/obj
+TodoList.Tests/obj
+TodoList.Tests/bin
+.idea

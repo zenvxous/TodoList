@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TodoList.Application\TodoList.Application.csproj" />
+      <ProjectReference Include="..\TodoList.Core\TodoList.Core.csproj" />
+      <ProjectReference Include="..\TodoList.Infrastructure\TodoList.Infrastructure.csproj" />
+      <ProjectReference Include="..\TodoList.Persistence\TodoList.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
