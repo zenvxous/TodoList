@@ -13,7 +13,7 @@ public class NoteTests
         var noteId = Guid.NewGuid();
         var title = "Test note";
         var description = "This is a test note";
-        var creationTime = DateTimeOffset.UtcNow;
+        var creationTime = DateTime.UtcNow;
         
         // Act
         var (error, note) = Note.Create(noteId, title, description, creationTime, user);
@@ -38,7 +38,7 @@ public class NoteTests
         var noteId = Guid.NewGuid();
         var title = ""; // Empty title
         var description = "This is a test note.";
-        var creationTime = DateTimeOffset.UtcNow;
+        var creationTime = DateTime.UtcNow;
 
         // Act
         var (error, note) = Note.Create(noteId, title, description, creationTime, user);
@@ -57,7 +57,7 @@ public class NoteTests
         var noteId = Guid.NewGuid();
         var title = "Test Note";
         var description = ""; // Empty description
-        var creationTime = DateTimeOffset.UtcNow;
+        var creationTime = DateTime.UtcNow;
 
         // Act
         var (error, note) = Note.Create(noteId, title, description, creationTime, user);
@@ -76,7 +76,7 @@ public class NoteTests
         var noteId = Guid.NewGuid();
         var title = "Test Note";
         var description = "Very long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long descriptionVery long description";  // Long description
-        var creationTime = DateTimeOffset.UtcNow;
+        var creationTime = DateTime.UtcNow;
         
         // Act
         var (error, note) = Note.Create(noteId, title, description, creationTime, user);
@@ -95,7 +95,7 @@ public class NoteTests
         var noteId = Guid.NewGuid();
         var title = "Long titleLong titleLong titleLong titleLong title "; // Long title
         var description = "This is a test note.";
-        var creationTime = DateTimeOffset.UtcNow;
+        var creationTime = DateTime.UtcNow;
         
         // Act
         var (error, note) = Note.Create(noteId, title, description, creationTime, user);

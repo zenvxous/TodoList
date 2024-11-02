@@ -4,7 +4,7 @@ namespace TodoList.Core.Models;
 
 public class Note
 {
-    private Note(Guid id, string title, string description, DateTimeOffset creationTime, User user)
+    private Note(Guid id, string title, string description, DateTime creationTime, User user)
     {
         Id = id;
         Title = title;
@@ -20,13 +20,13 @@ public class Note
     
     public string Description { get; private set; }
     
-    public DateTimeOffset CreationTime { get; private set; }
+    public DateTime CreationTime { get; private set; }
     
     public Guid UserId { get; private set; }
     
     public User User { get; private set; }
 
-    public static (string Error, Note? Note) Create(Guid id, string title, string description, DateTimeOffset creationTime, User user)
+    public static (string Error, Note? Note) Create(Guid id, string title, string description, DateTime creationTime, User user)
     {
         var error = NotesValidator.Validate(title, description);
 
