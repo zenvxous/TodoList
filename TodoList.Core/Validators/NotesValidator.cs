@@ -2,8 +2,8 @@ namespace TodoList.Core.Validators;
 
 public static class NotesValidator
 {
-    private const int MAX_TITLE_LENGTH = 50;
-    private const int MAX_DESCRIPTION_LENGTH = 200;
+    public const int MAX_TITLE_LENGTH = 50;
+    public const int MAX_DESCRIPTION_LENGTH = 200;
     
     public static string Validate(string title, string description)
     {
