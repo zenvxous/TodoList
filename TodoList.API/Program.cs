@@ -1,9 +1,13 @@
+using TodoList.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<TodoListDbContext>();
 
 var app = builder.Build();
 
