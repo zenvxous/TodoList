@@ -5,11 +5,11 @@ using TodoList.Persistence.Entities;
 
 namespace TodoList.Persistence.Repositories;
 
-public class UsersRepositories : IUsersRepositories
+public class UsersRepository : IUsersRepository
 {
     private readonly TodoListDbContext _dbContext;
 
-    public UsersRepositories(TodoListDbContext dbContext)
+    public UsersRepository(TodoListDbContext dbContext)
     {
         _dbContext = dbContext;
     }

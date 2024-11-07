@@ -2,7 +2,7 @@ using TodoList.Core.Models;
 
 namespace TodoList.Core.Interfaces.Repositories;
 
-public interface IUsersRepositories
+public interface IUsersRepository
 {
     Task<User?> GetByIdAsync(Guid id);
     Task<User?> GetByEmailAsync(string email);

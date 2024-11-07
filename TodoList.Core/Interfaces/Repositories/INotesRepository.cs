@@ -2,7 +2,7 @@ using TodoList.Core.Models;
 
 namespace TodoList.Core.Interfaces.Repositories;
 
-public interface INotesRepositories
+public interface INotesRepository
 {
     Task<Note?> GetByIdAsync(Guid id);
     Task<List<Note>> GetAllAsync();
