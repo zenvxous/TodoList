@@ -17,6 +17,7 @@ public class UsersRepository : IUsersRepository
     public async Task<User?> GetByIdAsync(Guid id)
     {
         var userEntity = await _dbContext.Users
+            .Include(u => u.Notes)
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Id == id);
         
@@ -26,6 +27,7 @@ public class UsersRepository : IUsersRepository
     public async Task<User?> GetByEmailAsync(string email)
     {
         var userEntity = await _dbContext.Users
+            .Include(u => u.Notes)
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email == email);
         
@@ -35,6 +37,7 @@ public class UsersRepository : IUsersRepository
     public async Task<User?> GetByUsernameAsync(string username)
     {
         var userEntity = await _dbContext.Users
+            .Include(u => u.Notes)
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Name == username);
         
@@ -58,6 +61,32 @@ public class UsersRepository : IUsersRepository
     
     private User Map(UserEntity entity)
     {
-        return User.Create(entity.Id, entity.Name, entity.Email, entity.HashedPassword, []).User!;
+        var notes = MapNotes(entity.Notes);
+        return User.Create(entity.Id, entity.Name, entity.Email, entity.HashedPassword, notes).User!;
+    }
+
+    private List<Note> MapNotes(List<NoteEntity> notesEntities)
+    {
+        var notes = new List<Note>();
+        
+        foreach (var note in notesEntities)
+        {
+            var user = User.Create(
+                note.User.Id,
+                note.User.Name,
+                note.User.Email,
+                note.User.HashedPassword,
+                []).User!;
+        
+            notes.Add(
+                Note.Create(
+                note.Id,
+                note.Title,
+                note.Description,
+                note.CreationTime,
+                user).Note!);
+        }
+        
+        return notes;
     }
 }

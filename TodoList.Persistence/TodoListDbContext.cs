@@ -7,20 +7,11 @@ namespace TodoList.Persistence;
 
 public class TodoListDbContext : DbContext
 {
-    private readonly IConfiguration _configuration;
-
-    public TodoListDbContext(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    public TodoListDbContext(DbContextOptions<TodoListDbContext> options)
+        : base(options) { }
 
     public DbSet<NoteEntity> Notes { get; set; }
     public DbSet<UserEntity> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
