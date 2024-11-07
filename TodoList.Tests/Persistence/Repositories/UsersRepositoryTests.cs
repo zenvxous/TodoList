@@ -8,7 +8,7 @@ namespace TodoList.Tests.Persistence.Repositories;
 
 public class UsersRepositoryTests : IDisposable
 {
-    private const string CONNECTION_STRING = "Server=localhost,1433;Database=TodoList_Tests;User Id=sa;Password=Tod0List!;TrustServerCertificate=True;";
+    private const string CONNECTION_STRING = "Server=localhost,1433;Database=TodoList_UsersTests;User Id=sa;Password=Tod0List!;TrustServerCertificate=True;";
     
     private readonly TodoListDbContext _context;
     private readonly UsersRepository _repository;
@@ -45,7 +45,7 @@ public class UsersRepositoryTests : IDisposable
             HashedPassword = "test password",
             Notes = []
         };
-
+        
         var noteEntity = new NoteEntity
         {
             Id = Guid.NewGuid(),
@@ -212,7 +212,7 @@ public class UsersRepositoryTests : IDisposable
     }
 
     [Fact]
-    public async Task CreateAsync_UserDoesNotExist_ReturnsUser()
+    public async Task CreateAsync_User_ReturnsUser()
     {
         // Arrange
         var id = Guid.NewGuid();
@@ -227,13 +227,13 @@ public class UsersRepositoryTests : IDisposable
         await _repository.CreateAsync(user);
         
         // Assert
-        var userInDb = await _repository.GetByIdAsync(id);
+        var createdUser = await _repository.GetByIdAsync(id);
         
-        Assert.NotNull(userInDb);
-        Assert.Equal(id, userInDb.Id);
-        Assert.Equal(username, userInDb.Name);
-        Assert.Equal(email, userInDb.Email);
-        Assert.Equal(hashedPassword, userInDb.HashedPassword);
-        Assert.Equal(notes.Count, userInDb.Notes.Count);
+        Assert.NotNull(createdUser);
+        Assert.Equal(id, createdUser.Id);
+        Assert.Equal(username, createdUser.Name);
+        Assert.Equal(email, createdUser.Email);
+        Assert.Equal(hashedPassword, createdUser.HashedPassword);
+        Assert.Equal(notes.Count, createdUser.Notes.Count);
     }
 }

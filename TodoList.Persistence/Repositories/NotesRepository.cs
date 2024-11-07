@@ -17,6 +17,7 @@ public class NotesRepository : INotesRepository
     public async Task<Note?> GetByIdAsync(Guid id)
     {
         var noteEntity = await _dbContext.Notes
+            .Include(n => n.User)
             .AsNoTracking()
             .FirstOrDefaultAsync(n => n.Id == id);
         
