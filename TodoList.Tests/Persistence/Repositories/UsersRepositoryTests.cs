@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TodoList.Core.Models;
 using TodoList.Persistence;
 using TodoList.Persistence.Entities;
 using TodoList.Persistence.Repositories;
@@ -208,5 +209,31 @@ public class UsersRepositoryTests : IDisposable
         
         // Assert
         Assert.Null(user);
-    }   
+    }
+
+    [Fact]
+    public async Task CreateAsync_UserDoesNotExist_ReturnsUser()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+        var username = "testUser";
+        var email = "test@example.com";
+        var hashedPassword = "hashedPassword123";
+        var notes = new List<Note>();
+        
+        var user = User.Create(id, username, email, hashedPassword, notes).User!;
+        
+        // Act
+        await _repository.CreateAsync(user);
+        
+        // Assert
+        var userInDb = await _repository.GetByIdAsync(id);
+        
+        Assert.NotNull(userInDb);
+        Assert.Equal(id, userInDb.Id);
+        Assert.Equal(username, userInDb.Name);
+        Assert.Equal(email, userInDb.Email);
+        Assert.Equal(hashedPassword, userInDb.HashedPassword);
+        Assert.Equal(notes.Count, userInDb.Notes.Count);
+    }
 }
