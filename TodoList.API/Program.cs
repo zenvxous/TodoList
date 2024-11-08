@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.API.Extensions;
+using TodoList.Application.Services;
 using TodoList.Core.Interfaces.Auth;
+using TodoList.Core.Interfaces.Repositories;
+using TodoList.Core.Interfaces.Services;
 using TodoList.Infrastructure.Auth;
 using TodoList.Persistence;
+using TodoList.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,8 @@ builder.Services.AddDbContext<TodoListDbContext>(
 
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
 var app = builder.Build();
 
