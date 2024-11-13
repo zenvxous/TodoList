@@ -70,7 +70,7 @@ public class UserTests
     {
         // Arrange
         var id = Guid.NewGuid();
-        var username = "Long usernameLong usernameLong usernameLong username"; // Long username
+        var username = "LongusernameLongusernameLongusernameLongusernameeeeeeee"; // Long username
         var email = "test@example.com";
         var hashedPassword = "hashedPassword123";
         var notes = new List<Note>();
@@ -81,6 +81,25 @@ public class UserTests
         // Assert
         Assert.NotEmpty(error);
         Assert.Equal("Username is too long!", error);
+        Assert.Null(user);
+    }
+
+    [Fact]
+    public void Create_User_InvalidUsername_ReturnsError()
+    {
+        // Arrange
+        var id = Guid.NewGuid();
+        var username = "Invalid@ Username"; // Long username
+        var email = "test@example.com";
+        var hashedPassword = "hashedPassword123";
+        var notes = new List<Note>();
+        
+        // Act
+        var (error, user) = User.Create(id, username, email, hashedPassword, notes);
+        
+        // Assert
+        Assert.NotEmpty(error);
+        Assert.Equal("Invalid username!", error);
         Assert.Null(user);
     }
     

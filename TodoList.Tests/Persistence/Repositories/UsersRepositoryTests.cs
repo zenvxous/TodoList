@@ -40,7 +40,7 @@ public class UsersRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test Username",
+            Name = "TestUsername",
             Email = "test@test.com",
             HashedPassword = "test password",
             Notes = []
@@ -100,7 +100,7 @@ public class UsersRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test Username",
+            Name = "TestUsername",
             Email = email,
             HashedPassword = "test password",
             Notes = []
@@ -156,7 +156,7 @@ public class UsersRepositoryTests : IDisposable
     {
         // Arrange
         var userId = Guid.NewGuid();
-        var username = "Test Username";
+        var username = "TestUsername";
         var userEntity = new UserEntity
         {
             Id = userId,

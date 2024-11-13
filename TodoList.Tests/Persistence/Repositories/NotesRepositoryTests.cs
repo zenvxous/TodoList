@@ -40,7 +40,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test Username",
+            Name = "TestUsername",
             Email = "test@test.com",
             HashedPassword = "test password",
             Notes = []
@@ -94,7 +94,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity1 = new UserEntity
         {
             Id = userId1,
-            Name = "Author One",
+            Name = "AuthorOne",
             Email = "author1@test.com",
             HashedPassword = "password1",
             Notes = new List<NoteEntity>()
@@ -104,7 +104,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity2 = new UserEntity
         {
             Id = userId2,
-            Name = "Author Two",
+            Name = "AuthorTwo",
             Email = "author2@test.com",
             HashedPassword = "password2",
             Notes = new List<NoteEntity>()
@@ -184,7 +184,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test User",
+            Name = "TestUser",
             Email = "testuser@test.com",
             HashedPassword = "hashedpassword",
             Notes = []
@@ -233,7 +233,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test Username",
+            Name = "TestUsername",
             Email = "test@test.com",
             HashedPassword = "test password",
             Notes = []
@@ -275,7 +275,7 @@ public class NotesRepositoryTests : IDisposable
         var userEntity = new UserEntity
         {
             Id = userId,
-            Name = "Test Username",
+            Name = "TestUsername",
             Email = "test@test.com",
             HashedPassword = "test password",
             Notes = []
