@@ -41,7 +41,7 @@ public class UsersService : IUsersService
         return true;
     }
     
-    public async Task<string> Register(string username, string password, string email)
+    public async Task<string> RegisterUser(string username, string password, string email)
     {
         if(await CheckUserExists(username, email))
             return "User already exists";

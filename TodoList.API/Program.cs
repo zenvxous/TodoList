@@ -15,6 +15,8 @@ builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOpti
 
 builder.Services.AddControllers();
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddApiAuthentication(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
